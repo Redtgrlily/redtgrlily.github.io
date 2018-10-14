@@ -14,7 +14,7 @@ h2 {
     float: none;
 }
 .container {
-    max-width: 980px;
+    max-width: 960px;
     max-height: 980px;
     border: 5px solid black;
     float: none; 
@@ -42,4 +42,25 @@ body {
 #portbut {
     background-color: #4b0c66;
     color: whitesmoke;
+}
+
+/*media queries - bootstrap homework assignment part 2*/
+
+@media (max-width:980px)  {
+    .container {
+        background-color: lightgrey;
+    }
+}
+@media (max-width:768px)  {
+    .container {
+        background-color: lightblue;
+    }
+}
+@media (min-width:640px)  {
+    h2 {
+        position: static;
+    }
+    .container {
+        background-color: white;
+    }
 }
