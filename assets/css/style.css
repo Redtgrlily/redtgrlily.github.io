@@ -9,6 +9,11 @@ body {
     border: solid 5px black;
     width: 600px;
     height: 600px;
-    position: absolute;
     background-image: url("../images/treasurebkgrnd.jpg");
+}
+.title {
+    background-color: white;
+    color: darkblue;
+    border: 4px lightcoral solid;
+    text-align: center;
 }
