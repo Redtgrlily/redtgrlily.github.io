@@ -21,6 +21,6 @@ nav {
     border: solid darkblue 2px;
     color: whitesmoke;
 }
-html {
-    background-color: darkslategrey;
+#contact-form {
+    background-color: darkgrey;
 }
