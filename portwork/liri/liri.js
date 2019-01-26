@@ -4,8 +4,9 @@ var keys = require("./keys.js", function (script, textStatus, jqXHR) {
     spotify = new spotify(keys.spotify)
     axios = new axios(keys.axios)
 });
-
-// Node module imports needed to run the functions
+// ---------------------------------------------------------------------------------------------------------------
+// NPM REFs
+// ---------------------------------------------------------------------------------------------------------------
 var fs = require("fs"); //reads and writes files
 var spotify = require("node-spotify-api");
 var axios = require("axios");
@@ -14,7 +15,8 @@ var dotenv = require("dotenv");
 var inquirer = require("inquirer");
 var liriArgument = process.argv[2];
 // ---------------------------------------------------------------------------------------------------------------
-// Possible commands for this liri app
+// Commands
+// ---------------------------------------------------------------------------------------------------------------
 switch(liriArgument) {
     case "concert-this": concertThis(); break;
     case "spotify-this-song": spotifyThisSong(); break;
@@ -29,14 +31,46 @@ switch(liriArgument) {
         "Be sure to put the movie or song name in quotation marks if it's more than one word.");
 };
 // ---------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------
 // Functions
-// Movie function, uses the Request module to call the OMDB api
+// ---------------------------------------------------------------------------------------------------------------
+// CONCERT
+// ---------------------------------------------------------------------------------------------------------------
+function concertThis(){
+    var concert = process.argv[3];
+    if(!concert){
+        concert = "weezer";
+    }
+    bandsinTown.getEventsFromArtist({
+        artist: "",
+        date: "",
+        location: "",
+    })
+
+
+    // this.artist = concert
+    // request("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp", function(error, response, concert){
+    //     if(!error){
+    //         var concertObject = JSON.parse(body);
+    //         console.log(concertObject);
+    //         var concertResults = 
+    //         "--------------------Results-----------------" +
+    //         ""
+    //     }
+    })
+}
+
+
+// ---------------------------------------------------------------------------------------------------------------
+// MOVIE
+// ---------------------------------------------------------------------------------------------------------------
 function movieThis(){
     var movie = process.argv[3];
     if(!movie){
         movie = "mr nobody";
     }
-    params = movie
+    this.params = movie
     request("http://www.omdbapi.com/?apikey=78148988&?t=" + params + "&y=&plot=short", function(error, response, movieResults) {
         if (!error && response.statusCode == 200) {
             var movieObject = JSON.parse(body);
@@ -61,7 +95,9 @@ function movieThis(){
         }
     });
 };
-// Spotify function, uses the Spotify module to call the Spotify api
+// ---------------------------------------------------------------------------------------------------------------
+//SPOTIFY
+// ---------------------------------------------------------------------------------------------------------------
 function spotifyThisSong(songName) {
     var songName = process.argv[3];
     if(!songName){
@@ -98,7 +134,9 @@ function spotifyThisSong(songName) {
         }
     });
 };
-// Do What It Says function, uses the reads and writes module to access the random.txt file and do what's written in it
+// ---------------------------------------------------------------------------------------------------------------
+// DO WHAT IT SAYS
+// ---------------------------------------------------------------------------------------------------------------
 function doWhatItSays() {
     fs.readFile("random.txt", "utf8", function(error, data){
         if (!error) {
@@ -109,7 +147,9 @@ function doWhatItSays() {
         }
     });
 };
-// Do What It Says function, uses the reads and writes module to access the log.txt file and write everything that returns in terminal in the log.txt file
+// ---------------------------------------------------------------------------------------------------------------
+// LOG APPEND
+// ---------------------------------------------------------------------------------------------------------------
 function log(logResults) {
   fs.appendFile("log.txt", logResults, (error) => {
     if(error) {
